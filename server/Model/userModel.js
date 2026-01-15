@@ -4,7 +4,7 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    emai:{
+    email:{
         type:String,
         required:true
     },
@@ -13,5 +13,4 @@ const userSchema=new mongoose.Schema({
         requird:true
     }
 })
-const user=mongoose.model("user",userSchema)
-export default user
+export const user=mongoose.model("user",userSchema)
