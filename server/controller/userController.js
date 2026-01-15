@@ -45,3 +45,21 @@ export const getUserById=async (req,res)=>{
          res.status(500).json({msg:`cant get the all the user ${error}`})
     }
 }
+
+export const updateData=async(req,res)=>{
+    try{
+        const id=req.params.id;
+        const userExsist=await user.findById(id)
+        if(!userExsist){
+            res.status(400).json({msg:"user data not found"})
+        }
+        const data=await user.findByIdAndUpdate(id,req.body,{
+            new:true
+        })
+        res.status(200).json({data})
+
+    }
+    catch(error){
+        res.status(500).json({msg:`cant get the all the user ${error}`})
+    }
+}
