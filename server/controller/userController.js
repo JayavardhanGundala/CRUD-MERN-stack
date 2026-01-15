@@ -30,3 +30,18 @@ export const getAllUsers=async (req,res)=>{
     }
 
 }
+
+export const getUserById=async (req,res)=>{
+    try{
+        const id=req.params.id;
+        const userExsist=await user.findById(id)
+        if(!userExsist){
+            res.status(400).json({msg:"user data not found"})
+        }
+        res.status(200).json(userExsist)
+
+    }
+    catch(error){
+         res.status(500).json({msg:`cant get the all the user ${error}`})
+    }
+}
