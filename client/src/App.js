@@ -1,6 +1,6 @@
 
 import './App.css';
-import User from './getUsers/user';
+import {User} from './getUsers/user';
 
 function App() {
   return (

@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./user.css"
+import axios from "axios"
 
-const user = () => {
+
+export const User = () => {
+    const [users,setUsers]=useState([])
+    useEffect(()=>{
+        const fetchData=async()=>{
+            const response=await axios.get("http://localhost:5000/api/users")
+            setUsers(response.data)
+
+        }
+
+        fetchData()
+
+
+    })
+
   return (
     <div className="userTable">
         <button type="button" class="btn btn-primary">Add user <i class="fa-solid fa-user-plus"></i></button>
@@ -16,16 +31,22 @@ const user = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>jhon</td>
-                    <td>jayavardhan9911@gmail.com</td>
-                    <td>5/543</td>
+                {users.map((user,index)=>{
+                    return(
+                    <tr>
+                    <td>{index+1}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.address}</td>
                     <td className='abc'>
                         <button type="button" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></button>
                         <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                         </td>
-                </tr>
+                     </tr>
+                        
+                    )
+                })}
+                
             </tbody>
 
         </table>
@@ -33,4 +54,3 @@ const user = () => {
   )
 }
 
-export default user
