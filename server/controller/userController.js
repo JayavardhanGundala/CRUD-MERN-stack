@@ -63,3 +63,21 @@ export const updateData=async(req,res)=>{
         res.status(500).json({msg:`cant get the all the user ${error}`})
     }
 }
+
+export const deleteUser=async (req,res)=>{
+    try{
+        const id=req.params.id;
+        const userExists=await user.findById(id)
+        if(!userExists){
+            res.status(400).json({msg:"user data not found"})
+        }
+        await user.findByIdAndDelete(id)
+        res.status(200).json({msg:"User deleted"})
+
+
+    }
+    catch(error){
+         res.status(500).json({msg:`srver error: ${error}`})
+
+    }
+}
