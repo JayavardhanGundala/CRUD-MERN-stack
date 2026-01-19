@@ -8,7 +8,7 @@ export const create=async (req,res)=>{
             return res.status(400).json({msg:"User exists"})
         }
         const saveData=await newuser.save()
-        res.status(200).json(saveData)
+        res.status(200).json({msg:"user created succesfully"})
 
     }
     catch(error){
