@@ -21,7 +21,7 @@ const Add = () => {
     }
     const submitForm=async(e)=>{
         e.preventDefault()
-        await axios.post("http://localhost:5000/api/user",user)
+        await axios.post("https://crud-backend-bjyf.onrender.com/api/user",user)
         .then((response)=>{
             toast.success(response.data.msg,{position:"top-right"})
             navigate("/")

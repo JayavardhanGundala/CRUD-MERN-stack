@@ -31,7 +31,7 @@ const  Updateuser = () => {
 
     }
     useEffect(()=>{
-        axios.get(`http://localhost:5000/api/user/${id}`)
+        axios.get(`https://crud-backend-bjyf.onrender.com/api/user/${id}`)
         .then((response)=>{
             setUser(response.data)
         })
@@ -41,7 +41,7 @@ const  Updateuser = () => {
     },[id])
     const submitForm=async(e)=>{
         e.preventDefault()
-        await axios.put(`http://localhost:5000/api/user/update/${id}`,user)
+        await axios.put(`https://crud-backend-bjyf.onrender.com/api/user/update/${id}`,user)
         .then((response)=>{
             toast.success(response.data.msg,{position:"top-right"})
             navigate("/")

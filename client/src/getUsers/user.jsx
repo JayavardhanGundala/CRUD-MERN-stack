@@ -10,7 +10,7 @@ export const User = () => {
     const [users,setUsers]=useState([])
     useEffect(()=>{
         const fetchData=async()=>{
-            const response=await axios.get("http://localhost:5000/api/users")
+            const response=await axios.get("https://crud-backend-bjyf.onrender.com/api/users")
             setUsers(response.data)
             
 
@@ -22,7 +22,7 @@ export const User = () => {
     },[])
 
     const deleteUser=async (userid)=>{
-        await axios.delete(`http://localhost:5000/api/delete/user/${userid}`)
+        await axios.delete(`https://crud-backend-bjyf.onrender.com/api/delete/user/${userid}`)
         .then((response)=>{
             setUsers((prevUser)=>prevUser.filter((user)=>user._id!==userid))
             toast.success(response.data.msg,{position:"top-right"})
